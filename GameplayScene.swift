@@ -12,7 +12,7 @@ class GameplayScene: SKScene {
 
     var bird = Bird();
     
-    
+    var pipesHolder = SKNode();
     
     override func didMove(to view: SKView) {
         initialize();
@@ -26,6 +26,7 @@ class GameplayScene: SKScene {
         createBird()
         createBackground();
         createGrounds();
+        createPipes();
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -90,6 +91,39 @@ class GameplayScene: SKScene {
         }));
         
         
+    }
+    
+    
+    func createPipes() {
+        pipesHolder = SKNode();
+        pipesHolder.name = "Holder"
+        
+        let pipeUp = SKSpriteNode(imageNamed: "Pipe 1");
+        let pipeDown = SKSpriteNode(imageNamed: "Pipe 1");
+        
+        pipeUp.name = "Pipe"
+        pipeUp.anchorPoint = CGPoint(x: 0.5, y: 0.5);
+        pipeUp.position = CGPoint(x: 0, y: 500)
+        pipeUp.zRotation = CGFloat(M_PI); //rotate 180 degress
+        pipeUp.physicsBody = SKPhysicsBody(rectangleOf: pipeUp.size)
+        pipeUp.physicsBody?.categoryBitMask = ColliderType.Pipes
+        pipeUp.physicsBody?.affectedByGravity = false;
+        pipeUp.physicsBody?.isDynamic = false;//when the bird touches we do not want for the pipe to move
+        
+        pipeDown.name = "Pipe"
+        pipeDown.anchorPoint = CGPoint(x: 0.5, y: 0.5);
+        pipeDown.position = CGPoint(x: 0, y: -500)
+        pipeDown.physicsBody = SKPhysicsBody(rectangleOf: pipeUp.size)
+        pipeDown.physicsBody?.categoryBitMask = ColliderType.Pipes
+        pipeDown.physicsBody?.affectedByGravity = false;
+        pipeDown.physicsBody?.isDynamic = false;//when the bird touches we do not want for the pipe to move
+        
+        pipesHolder.zPosition = 5; //greater position of the ground
+        pipesHolder.position = CGPoint(x: 0, y: 0)
+        
+        pipesHolder.addChild(pipeUp);
+        pipesHolder.addChild(pipeDown);
+        self.addChild(pipesHolder)
     }
 
 }
