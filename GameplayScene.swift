@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-class GameplayScene: SKScene {
+class GameplayScene: SKScene, SKPhysicsContactDelegate{
 
     var bird = Bird();
     
@@ -26,6 +26,7 @@ class GameplayScene: SKScene {
     }
     
     func initialize(){
+        physicsWorld.contactDelegate = self
         createBird()
         createBackground();
         createGrounds();
@@ -35,6 +36,29 @@ class GameplayScene: SKScene {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         bird.flap();
+    }
+    
+    func didBegin(_ contact: SKPhysicsContact) {
+        var firstBody = SKPhysicsBody();
+        var secondBody = SKPhysicsBody();
+        
+        if contact.bodyA.node?.name == "Bird"{ //we named the node Bird because thats the bird.swift class how we named self.name check
+            firstBody = contact.bodyA
+            secondBody = contact.bodyB
+        }else {
+            firstBody = contact.bodyB;
+            secondBody = contact.bodyA;
+        }
+        
+        if firstBody.node?.name == "Bird" && secondBody.node?.name == "Score"{
+            incrementScore()
+        } else if firstBody.node?.name == "Bird" && secondBody.node?.name == "Pipe"{
+            //collide with pipes so kill bird!!!!
+            
+        } else if firstBody.node?.name == "Bird" && secondBody.node?.name == "Ground"{
+            //kill the bird
+        }
+        
     }
     
     func createBird() {
