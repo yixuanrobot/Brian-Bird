@@ -12,6 +12,8 @@ class GameplayScene: SKScene {
 
     var bird = Bird();
     
+    
+    
     override func didMove(to view: SKView) {
         initialize();
     }
@@ -24,6 +26,10 @@ class GameplayScene: SKScene {
         createBird()
         createBackground();
         createGrounds();
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        bird.flap();
     }
     
     func createBird() {
@@ -53,6 +59,10 @@ class GameplayScene: SKScene {
             ground.zPosition = 4;
             ground.anchorPoint = CGPoint(x:0.5, y: 0.5)
             ground.position = CGPoint(x: CGFloat(i) * ground.size.width, y: -(self.frame.size.height / 2));
+            ground.physicsBody = SKPhysicsBody(rectangleOf: ground.size)
+            ground.physicsBody?.affectedByGravity = false;
+            ground.physicsBody?.isDynamic = false; //this would mean that our ground is not going to be pushed down by other nodes collide so setting isDynamic false means its static
+            ground.physicsBody?.categoryBitMask = ColliderType.Ground
             self.addChild(ground)
         }
     }
