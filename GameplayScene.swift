@@ -26,7 +26,7 @@ class GameplayScene: SKScene {
         createBird()
         createBackground();
         createGrounds();
-        createPipes();
+        spawnObstacles(); //create pipes is inside
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -119,12 +119,32 @@ class GameplayScene: SKScene {
         pipeDown.physicsBody?.isDynamic = false;//when the bird touches we do not want for the pipe to move
         
         pipesHolder.zPosition = 5; //greater position of the ground
-        pipesHolder.position = CGPoint(x: 0, y: 0)
+        pipesHolder.position.x = self.frame.width + 100; //whole scene plus 100px which so thats spawing pipes on the right side where the player can not see it
+        pipesHolder.position.y = 0;
         
         pipesHolder.addChild(pipeUp);
         pipesHolder.addChild(pipeDown);
         self.addChild(pipesHolder)
+        
+        
+        let destination = self.frame.width * 2;
+        let move = SKAction.moveTo(x: -destination, duration: TimeInterval(10))//moving to the left side so we can see pipes coming to the screen
+        let remove = SKAction.removeFromParent(); //take out of the scene 
+        
+        //
+        pipesHolder.run(SKAction.sequence([move, remove]), withKey: "Move")
+        
     }
-
+    
+    func spawnObstacles(){
+        let spawn = SKAction.run({ () -> Void in
+            self.createPipes();
+        });
+        
+        let delay = SKAction.wait(forDuration: TimeInterval(2));//wait 2 seceonds to spawn obstacles
+        let sequence = SKAction.sequence([spawn, delay]);//create a sequence , first call spawn then call delay then call spawn
+        
+        self.run(SKAction.repeatForever(sequence), withKey: "Spawn");//runAction forever
+    }
+    
 }
-
