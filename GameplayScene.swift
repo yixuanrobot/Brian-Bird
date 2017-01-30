@@ -14,6 +14,9 @@ class GameplayScene: SKScene {
     
     var pipesHolder = SKNode();
     
+    var scoreLabel = SKLabelNode(fontNamed: "04b_19")
+    var score = 0;
+    
     override func didMove(to view: SKView) {
         initialize();
     }
@@ -27,6 +30,7 @@ class GameplayScene: SKScene {
         createBackground();
         createGrounds();
         spawnObstacles(); //create pipes is inside
+        createLabel();
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -101,6 +105,21 @@ class GameplayScene: SKScene {
         let pipeUp = SKSpriteNode(imageNamed: "Pipe 1");
         let pipeDown = SKSpriteNode(imageNamed: "Pipe 1");
         
+        //the gap between the pipes
+        let scoreNode = SKSpriteNode();
+        
+        scoreNode.color = SKColor.red
+        
+        scoreNode.name = "Score";
+        scoreNode.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        scoreNode.position = CGPoint(x: 0, y: 0)
+        scoreNode.size = CGSize(width: 5, height: 300)// THE GAPS SIZE BETWEEN PUPES
+        scoreNode.physicsBody = SKPhysicsBody(rectangleOf: scoreNode.size)
+        scoreNode.physicsBody?.categoryBitMask = ColliderType.Score;
+        scoreNode.physicsBody?.collisionBitMask = 0 //we don't want score to collide with other objects
+        scoreNode.physicsBody?.affectedByGravity = false;
+        scoreNode.physicsBody?.isDynamic = false;
+        
         pipeUp.name = "Pipe"
         pipeUp.anchorPoint = CGPoint(x: 0.5, y: 0.5);
         pipeUp.position = CGPoint(x: 0, y: 630)
@@ -126,6 +145,8 @@ class GameplayScene: SKScene {
         
         pipesHolder.addChild(pipeUp);
         pipesHolder.addChild(pipeDown);
+        pipesHolder.addChild(scoreNode)
+        
         self.addChild(pipesHolder)
         
         
@@ -148,5 +169,20 @@ class GameplayScene: SKScene {
         
         self.run(SKAction.repeatForever(sequence), withKey: "Spawn");//runAction forever
     }
+    
+    func createLabel(){
+        scoreLabel.zPosition = 6;
+        scoreLabel.position = CGPoint(x: 0, y: 450)
+        scoreLabel.fontSize = 120;
+        scoreLabel.text = "0"
+        self.addChild(scoreLabel)
+    
+    }
+    
+    func incrementScore(){
+        score += 1;
+        scoreLabel.text = "\(score)"
+    }
+    
     
 }

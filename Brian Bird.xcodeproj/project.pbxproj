@@ -34,6 +34,7 @@
 		DA344DB41E3DD59600B26CE5 /* GameplayScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA344DB31E3DD59600B26CE5 /* GameplayScene.swift */; };
 		DAEF1BFC1E3FC4270079DA4A /* Brian Bird.png in Resources */ = {isa = PBXBuildFile; fileRef = DAEF1BFB1E3FC4270079DA4A /* Brian Bird.png */; };
 		DAEF1BFF1E3FCAB20079DA4A /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEF1BFE1E3FCAB20079DA4A /* Random.swift */; };
+		DAEF1C001E3FD0690079DA4A /* 04b_19.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DA344DA61E3DCE2700B26CE5 /* 04b_19.ttf */; };
 		DAF3A3FC1E3E8B7D000BD6A7 /* Bird.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF3A3FB1E3E8B7D000BD6A7 /* Bird.swift */; };
 /* End PBXBuildFile section */
 
@@ -409,6 +410,7 @@
 				DA344D621E3DCD3E00B26CE5 /* Assets.xcassets in Resources */,
 				DA344D651E3DCD3E00B26CE5 /* LaunchScreen.storyboard in Resources */,
 				DA344D591E3DCD3E00B26CE5 /* Actions.sks in Resources */,
+				DAEF1C001E3FD0690079DA4A /* 04b_19.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
