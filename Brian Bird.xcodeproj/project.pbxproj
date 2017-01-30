@@ -32,6 +32,8 @@
 		DA344DAD1E3DCE4400B26CE5 /* Score.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DA344DAA1E3DCE4400B26CE5 /* Score.mp3 */; };
 		DA344DB11E3DD52E00B26CE5 /* GameplayScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = DA344DB01E3DD52E00B26CE5 /* GameplayScene.sks */; };
 		DA344DB41E3DD59600B26CE5 /* GameplayScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA344DB31E3DD59600B26CE5 /* GameplayScene.swift */; };
+		DAEF1BFC1E3FC4270079DA4A /* Brian Bird.png in Resources */ = {isa = PBXBuildFile; fileRef = DAEF1BFB1E3FC4270079DA4A /* Brian Bird.png */; };
+		DAEF1BFF1E3FCAB20079DA4A /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEF1BFE1E3FCAB20079DA4A /* Random.swift */; };
 		DAF3A3FC1E3E8B7D000BD6A7 /* Bird.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF3A3FB1E3E8B7D000BD6A7 /* Bird.swift */; };
 /* End PBXBuildFile section */
 
@@ -85,6 +87,8 @@
 		DA344DAA1E3DCE4400B26CE5 /* Score.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Score.mp3; sourceTree = "<group>"; };
 		DA344DB01E3DD52E00B26CE5 /* GameplayScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameplayScene.sks; sourceTree = "<group>"; };
 		DA344DB31E3DD59600B26CE5 /* GameplayScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameplayScene.swift; sourceTree = "<group>"; };
+		DAEF1BFB1E3FC4270079DA4A /* Brian Bird.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Brian Bird.png"; sourceTree = "<group>"; };
+		DAEF1BFE1E3FCAB20079DA4A /* Random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Random.swift; sourceTree = "<group>"; };
 		DAF3A3FB1E3E8B7D000BD6A7 /* Bird.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bird.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -183,6 +187,7 @@
 		DA344D8A1E3DCD8D00B26CE5 /* Bird Blue */ = {
 			isa = PBXGroup;
 			children = (
+				DAEF1BFB1E3FC4270079DA4A /* Brian Bird.png */,
 				DA344D8D1E3DCDE400B26CE5 /* Blue 1.png */,
 				DA344D8E1E3DCDE400B26CE5 /* Blue 2.png */,
 				DA344D8F1E3DCDE400B26CE5 /* Blue 3.png */,
@@ -242,6 +247,7 @@
 		DA344DAF1E3DD4FB00B26CE5 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				DAEF1BFD1E3FCA9D0079DA4A /* Random Class */,
 				DAF3A3FA1E3E8B64000BD6A7 /* Bird Class */,
 				DA344DB21E3DD58300B26CE5 /* Scene Classes */,
 			);
@@ -254,6 +260,14 @@
 				DA344DB31E3DD59600B26CE5 /* GameplayScene.swift */,
 			);
 			name = "Scene Classes";
+			sourceTree = "<group>";
+		};
+		DAEF1BFD1E3FCA9D0079DA4A /* Random Class */ = {
+			isa = PBXGroup;
+			children = (
+				DAEF1BFE1E3FCAB20079DA4A /* Random.swift */,
+			);
+			name = "Random Class";
 			sourceTree = "<group>";
 		};
 		DAF3A3FA1E3E8B64000BD6A7 /* Bird Class */ = {
@@ -374,6 +388,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAEF1BFC1E3FC4270079DA4A /* Brian Bird.png in Resources */,
 				DA344DAB1E3DCE4400B26CE5 /* Dead.mp3 in Resources */,
 				DA344D9C1E3DCDF500B26CE5 /* Green 4.png in Resources */,
 				DA344D931E3DCDE400B26CE5 /* Blue 3.png in Resources */,
@@ -420,6 +435,7 @@
 			files = (
 				DA344DB41E3DD59600B26CE5 /* GameplayScene.swift in Sources */,
 				DA344D5D1E3DCD3E00B26CE5 /* GameViewController.swift in Sources */,
+				DAEF1BFF1E3FCAB20079DA4A /* Random.swift in Sources */,
 				DAF3A3FC1E3E8B7D000BD6A7 /* Bird.swift in Sources */,
 				DA344D551E3DCD3D00B26CE5 /* AppDelegate.swift in Sources */,
 			);

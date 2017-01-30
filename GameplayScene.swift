@@ -103,7 +103,8 @@ class GameplayScene: SKScene {
         
         pipeUp.name = "Pipe"
         pipeUp.anchorPoint = CGPoint(x: 0.5, y: 0.5);
-        pipeUp.position = CGPoint(x: 0, y: 500)
+        pipeUp.position = CGPoint(x: 0, y: 630)
+        pipeUp.yScale = 1.5;
         pipeUp.zRotation = CGFloat(M_PI); //rotate 180 degress
         pipeUp.physicsBody = SKPhysicsBody(rectangleOf: pipeUp.size)
         pipeUp.physicsBody?.categoryBitMask = ColliderType.Pipes
@@ -112,7 +113,8 @@ class GameplayScene: SKScene {
         
         pipeDown.name = "Pipe"
         pipeDown.anchorPoint = CGPoint(x: 0.5, y: 0.5);
-        pipeDown.position = CGPoint(x: 0, y: -500)
+        pipeDown.position = CGPoint(x: 0, y: -630)//this make the gap between pipes
+        pipeDown.yScale = 1.5;//pipes scale is larger
         pipeDown.physicsBody = SKPhysicsBody(rectangleOf: pipeUp.size)
         pipeDown.physicsBody?.categoryBitMask = ColliderType.Pipes
         pipeDown.physicsBody?.affectedByGravity = false;
@@ -120,7 +122,7 @@ class GameplayScene: SKScene {
         
         pipesHolder.zPosition = 5; //greater position of the ground
         pipesHolder.position.x = self.frame.width + 100; //whole scene plus 100px which so thats spawing pipes on the right side where the player can not see it
-        pipesHolder.position.y = 0;
+        pipesHolder.position.y = CGFloat.randomBetweenNumbers(firstNum: -300, secondNum: 300)
         
         pipesHolder.addChild(pipeUp);
         pipesHolder.addChild(pipeDown);
