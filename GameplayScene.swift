@@ -17,12 +17,17 @@ class GameplayScene: SKScene, SKPhysicsContactDelegate{
     var scoreLabel = SKLabelNode(fontNamed: "04b_19")
     var score = 0;
     
+    var gameStarted = false;
+    var isAlive = false;
+    
     override func didMove(to view: SKView) {
         initialize();
     }
     
     override func update(_ currentTime: TimeInterval) {
-        moveBackgroundsAndGrounds();
+        if isAlive { //if the game is active movebgsandgrounds
+            moveBackgroundsAndGrounds();
+        }
     }
     
     func initialize(){
@@ -30,12 +35,23 @@ class GameplayScene: SKScene, SKPhysicsContactDelegate{
         createBird()
         createBackground();
         createGrounds();
-        spawnObstacles(); //create pipes is inside
+       // spawnObstacles(); //create pipes is inside
         createLabel();
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        //this is the first time we touch the screen
+        if gameStarted == false {
+            isAlive = true;
+            gameStarted = true;
+            spawnObstacles();
+            bird.physicsBody?.affectedByGravity = true;
+            bird.flap();
+        }
+        
+        if isAlive {
         bird.flap();
+        }
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
@@ -54,9 +70,17 @@ class GameplayScene: SKScene, SKPhysicsContactDelegate{
             incrementScore()
         } else if firstBody.node?.name == "Bird" && secondBody.node?.name == "Pipe"{
             //collide with pipes so kill bird!!!!
+            if isAlive { //IF BIRD IS ALIVE THEN CALL BIRDDIED
+                birdDied();
+            }
             
         } else if firstBody.node?.name == "Bird" && secondBody.node?.name == "Ground"{
             //kill the bird
+            if isAlive {
+                birdDied();
+            }
+            
+            
         }
         
     }
@@ -206,6 +230,42 @@ class GameplayScene: SKScene, SKPhysicsContactDelegate{
     func incrementScore(){
         score += 1;
         scoreLabel.text = "\(score)"
+    }
+    
+    func birdDied(){
+        
+        self.removeAction(forKey: "Spawn") //we want to stop spawning the pipes
+        
+        for child in children {
+            if child.name == "Holder"{ //remove pipes in action statement in createpipes function
+                child.removeAction(forKey: "Move")//stop any pipes currently moving to stop
+            }
+        }
+        
+        isAlive = false;
+        
+        let retry = SKSpriteNode(imageNamed: "Retry")
+        let quit = SKSpriteNode(imageNamed: "Quit")
+        
+        retry.name = "Retry";
+        retry.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        retry.position = CGPoint(x: -150, y: -150);
+        retry.zPosition = 7;
+        retry.setScale(0);
+    
+        quit.name = "Retry";
+        quit.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        quit.position = CGPoint(x: 150, y: -150);
+        quit.zPosition = 7;
+        quit.setScale(0);
+        
+        let scaleUp = SKAction.scale(to: 1, duration: TimeInterval(1)) //ever 1 sec our quit and retry button is going to go from scale 0 to 1 that is the view if i put 5 then the view of the button is going to be too big! this animation
+        retry.run(scaleUp)
+        quit.run(scaleUp)
+        
+        self.addChild(retry);
+        self.addChild(quit);
+    
     }
     
     
