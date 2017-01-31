@@ -20,6 +20,8 @@ class GameplayScene: SKScene, SKPhysicsContactDelegate{
     var gameStarted = false;
     var isAlive = false;
     
+    var press = SKSpriteNode();
+    
     override func didMove(to view: SKView) {
         initialize();
     }
@@ -30,8 +32,17 @@ class GameplayScene: SKScene, SKPhysicsContactDelegate{
         }
     }
     
+    
+    
     func initialize(){
+        
+        gameStarted = false; //re do this because he have inside the retry button
+        isAlive = false;
+        score = 0; //restart to 0 when retry button is zero.
+        
         physicsWorld.contactDelegate = self
+        
+        createInstructions()
         createBird()
         createBackground();
         createGrounds();
@@ -39,20 +50,54 @@ class GameplayScene: SKScene, SKPhysicsContactDelegate{
         createLabel();
     }
     
+    func createInstructions() {
+        press = SKSpriteNode(imageNamed: "Press")
+        press.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        press.position = CGPoint(x: 0, y: 0)
+        press.setScale(1.8)
+        press.zPosition = 10;
+        self.addChild(press);
+    
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         //this is the first time we touch the screen
         if gameStarted == false {
             isAlive = true;
             gameStarted = true;
+            press.removeFromParent() //does not show press instruction when it starts
             spawnObstacles();
             bird.physicsBody?.affectedByGravity = true;
             bird.flap();
         }
         
         if isAlive {
-        bird.flap();
+            bird.flap();
         }
+        
+        
+        for touch in touches {
+            let location = touch.location(in: self) // get location in node of the skscene self.
+            if atPoint(location).name == "Retry"{
+                // restart the game
+                self.removeAllActions();
+                self.removeAllChildren(); //remove every child node we have in our scene
+                initialize();
+            
+            }
+        
+            if atPoint(location).name == "Quit"{
+                // go back to main menu
+                self.removeAllActions();
+                self.removeAllChildren();
+                initialize();
+                
+            }
+        }
+        
     }
+    
+    
     
     func didBegin(_ contact: SKPhysicsContact) {
         var firstBody = SKPhysicsBody();
