@@ -37,7 +37,11 @@ class MainMenuScene: SKScene{
             }
             
             if atPoint(location).name == "Bird"{
-            
+                //when we touch our bird btn in the mainmenu we will increment index
+                GameManager.instance.incrementIndex()
+                birdBtn.removeFromParent();////remove current birdbtn
+                createBirdButton();
+                
             }
         }
     }
@@ -80,6 +84,18 @@ class MainMenuScene: SKScene{
         birdBtn.setScale(1.3)
         birdBtn.zPosition = 3;
     
+        var birdAnim = [SKTexture](); //store all of animation
+        
+        for i in 1..<4 {
+            //in gamemanager we put birds[birdsIndex] to get Blue,Red, or Green then so  i is set to 1-3
+                let name = "\(GameManager.instance.getBird()) \(i)";
+            birdAnim.append(SKTexture(imageNamed: name));
+        }
+        
+        let animateBird = SKAction.animate(with: birdAnim, timePerFrame: 0.1, resize: true, restore: true)
+        birdBtn.run(SKAction.repeatForever(animateBird))
+        
+        
         self.addChild(birdBtn);
     }
 
