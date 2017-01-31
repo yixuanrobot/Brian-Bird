@@ -35,6 +35,9 @@
 		DAEF1BFC1E3FC4270079DA4A /* Brian Bird.png in Resources */ = {isa = PBXBuildFile; fileRef = DAEF1BFB1E3FC4270079DA4A /* Brian Bird.png */; };
 		DAEF1BFF1E3FCAB20079DA4A /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEF1BFE1E3FCAB20079DA4A /* Random.swift */; };
 		DAEF1C001E3FD0690079DA4A /* 04b_19.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DA344DA61E3DCE2700B26CE5 /* 04b_19.ttf */; };
+		DAEF1C021E4029F00079DA4A /* MainMenuScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = DAEF1C011E4029F00079DA4A /* MainMenuScene.sks */; };
+		DAEF1C041E402A2C0079DA4A /* MainMenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEF1C031E402A2C0079DA4A /* MainMenuScene.swift */; };
+		DAEF1C071E40616E0079DA4A /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEF1C061E40616E0079DA4A /* GameManager.swift */; };
 		DAF3A3FC1E3E8B7D000BD6A7 /* Bird.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF3A3FB1E3E8B7D000BD6A7 /* Bird.swift */; };
 /* End PBXBuildFile section */
 
@@ -90,6 +93,9 @@
 		DA344DB31E3DD59600B26CE5 /* GameplayScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameplayScene.swift; sourceTree = "<group>"; };
 		DAEF1BFB1E3FC4270079DA4A /* Brian Bird.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Brian Bird.png"; sourceTree = "<group>"; };
 		DAEF1BFE1E3FCAB20079DA4A /* Random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Random.swift; sourceTree = "<group>"; };
+		DAEF1C011E4029F00079DA4A /* MainMenuScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MainMenuScene.sks; sourceTree = "<group>"; };
+		DAEF1C031E402A2C0079DA4A /* MainMenuScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuScene.swift; sourceTree = "<group>"; };
+		DAEF1C061E40616E0079DA4A /* GameManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
 		DAF3A3FB1E3E8B7D000BD6A7 /* Bird.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bird.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -241,6 +247,7 @@
 			isa = PBXGroup;
 			children = (
 				DA344DB01E3DD52E00B26CE5 /* GameplayScene.sks */,
+				DAEF1C011E4029F00079DA4A /* MainMenuScene.sks */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -248,6 +255,7 @@
 		DA344DAF1E3DD4FB00B26CE5 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				DAEF1C051E4061560079DA4A /* Game Manager */,
 				DAEF1BFD1E3FCA9D0079DA4A /* Random Class */,
 				DAF3A3FA1E3E8B64000BD6A7 /* Bird Class */,
 				DA344DB21E3DD58300B26CE5 /* Scene Classes */,
@@ -259,6 +267,7 @@
 			isa = PBXGroup;
 			children = (
 				DA344DB31E3DD59600B26CE5 /* GameplayScene.swift */,
+				DAEF1C031E402A2C0079DA4A /* MainMenuScene.swift */,
 			);
 			name = "Scene Classes";
 			sourceTree = "<group>";
@@ -269,6 +278,14 @@
 				DAEF1BFE1E3FCAB20079DA4A /* Random.swift */,
 			);
 			name = "Random Class";
+			sourceTree = "<group>";
+		};
+		DAEF1C051E4061560079DA4A /* Game Manager */ = {
+			isa = PBXGroup;
+			children = (
+				DAEF1C061E40616E0079DA4A /* GameManager.swift */,
+			);
+			name = "Game Manager";
 			sourceTree = "<group>";
 		};
 		DAF3A3FA1E3E8B64000BD6A7 /* Bird Class */ = {
@@ -410,6 +427,7 @@
 				DA344D621E3DCD3E00B26CE5 /* Assets.xcassets in Resources */,
 				DA344D651E3DCD3E00B26CE5 /* LaunchScreen.storyboard in Resources */,
 				DA344D591E3DCD3E00B26CE5 /* Actions.sks in Resources */,
+				DAEF1C021E4029F00079DA4A /* MainMenuScene.sks in Resources */,
 				DAEF1C001E3FD0690079DA4A /* 04b_19.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -435,8 +453,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAEF1C041E402A2C0079DA4A /* MainMenuScene.swift in Sources */,
 				DA344DB41E3DD59600B26CE5 /* GameplayScene.swift in Sources */,
 				DA344D5D1E3DCD3E00B26CE5 /* GameViewController.swift in Sources */,
+				DAEF1C071E40616E0079DA4A /* GameManager.swift in Sources */,
 				DAEF1BFF1E3FCAB20079DA4A /* Random.swift in Sources */,
 				DAF3A3FC1E3E8B7D000BD6A7 /* Bird.swift in Sources */,
 				DA344D551E3DCD3D00B26CE5 /* AppDelegate.swift in Sources */,

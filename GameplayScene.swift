@@ -78,6 +78,7 @@ class GameplayScene: SKScene, SKPhysicsContactDelegate{
         
         for touch in touches {
             let location = touch.location(in: self) // get location in node of the skscene self.
+            
             if atPoint(location).name == "Retry"{
                 // restart the game
                 self.removeAllActions();
@@ -85,14 +86,13 @@ class GameplayScene: SKScene, SKPhysicsContactDelegate{
                 initialize();
             
             }
-        
-            if atPoint(location).name == "Quit"{
-                // go back to main menu
-                self.removeAllActions();
-                self.removeAllChildren();
-                initialize();
-                
+            
+            if atPoint(location).name == "Quit" {
+                let mainMenu = MainMenuScene(fileNamed: "MainMenuScene");
+                mainMenu!.scaleMode = .aspectFill
+                self.view?.presentScene(mainMenu!, transition: SKTransition.doorway(withDuration: TimeInterval(1)));
             }
+            
         }
         
     }
@@ -298,7 +298,7 @@ class GameplayScene: SKScene, SKPhysicsContactDelegate{
         retry.zPosition = 7;
         retry.setScale(0);
     
-        quit.name = "Retry";
+        quit.name = "Quit";
         quit.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         quit.position = CGPoint(x: 150, y: -150);
         quit.zPosition = 7;
