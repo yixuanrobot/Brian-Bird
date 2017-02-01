@@ -30,7 +30,12 @@ class GameManager {
         return birds[birdIndex];
     }
 
-
-
+    func setHighscore(_ highscore: Int) { //because we are saving only one item we don't need all that nsdefaults archiever
+        UserDefaults.standard.set(highscore, forKey: "Highscore");
+    }
+    
+    func getHighscore() -> Int {
+        return UserDefaults.standard.integer(forKey: "Highscore"); //retun value highscore
+    }
 
 }

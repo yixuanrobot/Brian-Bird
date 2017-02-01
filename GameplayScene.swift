@@ -291,6 +291,13 @@ class GameplayScene: SKScene, SKPhysicsContactDelegate{
         
         bird.texture = bird.diedTexture; //change bird texture to diedTexture image we put in the birdclass
         
+        let highscore = GameManager.instance.getHighscore();
+        
+        if highscore < score {
+            //if the current score is greater than the saved highscore then we have a new highscore
+            GameManager.instance.setHighscore(score);
+        }
+        
         let retry = SKSpriteNode(imageNamed: "Retry")
         let quit = SKSpriteNode(imageNamed: "Quit")
         
